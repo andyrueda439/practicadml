@@ -187,3 +187,51 @@ add constraint fk_habitaciones_pacientes
 foreign key (id_paciente)
 references pacientes(id_paciente);
 go
+
+-- Modulo III:Modificacion de estructuras (ALTER)
+
+alter table pacientes
+add telefono varchar(20);
+
+alter table pacientes
+add direccion varchar(200);
+
+alter table pacientes
+add genero varchar(20);
+
+alter table pacientes
+add tipo_sangre varchar(5);
+
+alter table pacientes
+add fecha_nacimiento date;
+
+alter table pacientes
+alter column nombre varchar(100);
+
+alter table pacientes
+alter column direccion varchar(300);
+
+alter table medicos
+add experiencia int;
+
+alter table medicos
+add turno varchar(30);
+
+alter table medicos
+add observaciones varchar(200);
+
+alter table medicos
+drop column observaciones;
+
+alter table citas
+add estado varchar(30);
+
+alter table citas
+add costo_consulta decimal(10,2);
+
+alter table citas
+alter column costo_consulta decimal(12,2);
+
+alter table habitaciones
+add disponibilidad varchar(20);
+go
