@@ -330,3 +330,67 @@ values
 (8,'Andy','Rueda','[andrea@gmail.com](mailto:andy@gmail.com)',45,getdate(),'Managua','M','O+','2008-01-14'),
 (9,'Jose','Castillo','[jose@gmail.com](mailto:jose@gmail.com)',50,getdate(),'Esteli','M','A+','2006-06-25'),
 (10,'Patricia','Mendez','[patricia@gmail.com](mailto:patricia@gmail.com)',31,getdate(),'Chinandega','F','AB-','2000-12-01');
+
+-- Citas
+
+insert into citas
+(id_cita,id_paciente,id_medico,fecha_cita,fecha_registro,estado,costo_consulta)
+values
+(1,1,1,'2026-06-10 08:00:00',getdate(),'Pendiente',40),
+(2,2,2,'2026-06-11 09:00:00',getdate(),'Pendiente',45),
+(3,3,3,'2026-06-12 10:00:00',getdate(),'Pendiente',50),
+(4,4,4,'2026-06-13 11:00:00',getdate(),'Pendiente',55),
+(5,5,5,'2026-06-14 12:00:00',getdate(),'Pendiente',60),
+(6,6,6,'2026-06-15 08:00:00',getdate(),'Pendiente',40),
+(7,7,7,'2026-06-16 09:00:00',getdate(),'Pendiente',45),
+(8,8,8,'2026-06-17 10:00:00',getdate(),'Pendiente',50),
+(9,9,9,'2026-06-18 11:00:00',getdate(),'Pendiente',55),
+(10,10,10,'2026-06-19 12:00:00',getdate(),'Pendiente',60);
+
+-- Habitaciones
+
+insert into habitaciones
+(id_habitacion,numero,tipo,id_paciente,fecha_registro,disponibilidad)
+values
+(1,'101','Individual',1,getdate(),'Ocupada'),
+(2,'102','Individual',2,getdate(),'Ocupada'),
+(3,'103','Doble',null,getdate(),'Disponible'),
+(4,'104','Doble',null,getdate(),'Disponible'),
+(5,'105','Suite',3,getdate(),'Ocupada'),
+(6,'106','Individual',null,getdate(),'Disponible'),
+(7,'107','Doble',4,getdate(),'Ocupada'),
+(8,'108','Suite',null,getdate(),'Disponible'),
+(9,'109','Individual',5,getdate(),'Ocupada'),
+(10,'110','Doble',null,getdate(),'Disponible');
+
+-- Tratamientos
+
+insert into tratamientos
+(id_tratamiento,id_paciente,descripcion,fecha_inicio,fecha_fin,fecha_registro)
+values
+(1,1,'Control cardiaco','2026-06-01','2026-06-30',getdate()),
+(2,2,'Tratamiento respiratorio','2026-06-01','2026-06-20',getdate()),
+(3,3,'Rehabilitacion fisica','2026-06-05','2026-07-05',getdate()),
+(4,4,'Tratamiento dermatologico','2026-06-03','2026-06-25',getdate()),
+(5,5,'Control neurologico','2026-06-01','2026-06-30',getdate()),
+(6,6,'Control pediatrico','2026-06-02','2026-06-22',getdate()),
+(7,7,'Recuperacion muscular','2026-06-04','2026-07-04',getdate()),
+(8,8,'Control general','2026-06-06','2026-06-26',getdate()),
+(9,9,'Seguimiento medico','2026-06-08','2026-06-28',getdate()),
+(10,10,'Tratamiento preventivo','2026-06-10','2026-06-30',getdate());
+
+-- Medicamentos
+
+insert into medicamentos
+(id_medicamento,id_tratamiento,nombre,descripcion,fecha_vencimiento,stock,fecha_registro)
+values
+(1,1,'Paracetamol','Analgésico','2027-01-01',100,getdate()),
+(2,2,'Ibuprofeno','Antiinflamatorio','2027-02-01',80,getdate()),
+(3,3,'Amoxicilina','Antibiotico','2027-03-01',60,getdate()),
+(4,4,'Loratadina','Antialergico','2027-04-01',50,getdate()),
+(5,5,'Omeprazol','Protector gastrico','2027-05-01',70,getdate()),
+(6,6,'Acetaminofen','Analgésico','2027-06-01',90,getdate()),
+(7,7,'Vitamina C','Suplemento','2027-07-01',120,getdate()),
+(8,8,'Diclofenaco','Antiinflamatorio','2027-08-01',75,getdate()),
+(9,9,'Metformina','Control glucosa','2027-09-01',65,getdate()),
+(10,10,'Losartan','Presion arterial','2027-10-01',55,getdate());
