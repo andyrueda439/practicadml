@@ -235,3 +235,55 @@ alter column costo_consulta decimal(12,2);
 alter table habitaciones
 add disponibilidad varchar(20);
 go
+
+-- Modulo IV: Eliminacion de objetos DROP
+
+create table tabla_temporal (
+id int
+);
+
+drop table tabla_temporal;
+
+alter table pacientes
+drop constraint chk_pacientes_edad;
+
+alter table pacientes
+drop constraint uq_pacientes_correo;
+
+alter table pacientes
+drop column telefono;
+
+create table tabla_pruebas (
+id int
+);
+
+drop table tabla_pruebas;
+
+create table auditoria (
+id int,
+descripcion varchar(100)
+);
+
+drop table auditoria;
+
+create table logs (
+id int,
+detalle varchar(100)
+);
+
+drop table logs;
+
+alter table habitaciones
+drop constraint fk_habitaciones_pacientes;
+
+create table medicamentosprueba (
+id int
+);
+
+drop table medicamentosprueba;
+
+create database HospitalPrueba;
+go
+
+drop database HospitalPrueba;
+go
