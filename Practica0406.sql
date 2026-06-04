@@ -287,3 +287,46 @@ go
 
 drop database HospitalPrueba;
 go
+
+--Modulo V: Insert
+
+-- 5 especialidades
+
+insert into especialidades values
+(1,'Cardiologia','Enfermedades del corazon',getdate()),
+(2,'Pediatria','Atencion infantil',getdate()),
+(3,'Neurologia','Sistema nervioso',getdate()),
+(4,'Dermatologia','Enfermedades de la piel',getdate()),
+(5,'Traumatologia','Lesiones oseas',getdate());
+
+-- 10 medicos
+
+insert into medicos
+(id_medico,nombre,apellido,correo,salario,id_especialidad,fecha_registro,experiencia,turno)
+values
+(1,'Yamil','Perez','[yamil@hospital.com](mailto:yamil@hospital.com)',1200,1,getdate(),10,'Matutino'),
+(2,'Samanta','Vela','[samanta@hospital.com](mailto:samanta@hospital.com)',1300,2,getdate(),8,'Vespertino'),
+(3,'Carlos','Ruiz','[carlos@hospital.com](mailto:carlos@hospital.com)',1500,3,getdate(),12,'Nocturno'),
+(4,'Emily','Melendez','[emily@hospital.com](mailto:emily@hospital.com)',1250,4,getdate(),6,'Matutino'),
+(5,'Andrea','Ibarra','[andrea@hospital.com](mailto:andrea@hospital.com)',1400,5,getdate(),9,'Vespertino'),
+(6,'Laura','Noguera','[lucia@hospital.com](mailto:lucia@hospital.com)',1350,1,getdate(),7,'Matutino'),
+(7,'Ernesto','Mercado','[ernesto@hospital.com](mailto:ernesto@hospital.com)',1450,2,getdate(),11,'Nocturno'),
+(8,'Nicole','Solorzano','[nicole@hospital.com](mailto:nicole@hospital.com)',1380,3,getdate(),5,'Vespertino'),
+(9,'Mario','Torres','[mario@hospital.com](mailto:mario@hospital.com)',1420,4,getdate(),13,'Matutino'),
+(10,'Isela','Trejos','[isela@hospital.com](mailto:isela@hospital.com)',1500,5,getdate(),15,'Nocturno');
+
+-- 20 pacientes
+
+insert into pacientes
+(id_paciente,nombre,apellido,correo,edad,fecha_registro,direccion,genero,tipo_sangre,fecha_nacimiento)
+values
+(1,'Luis','Alvarez','[luis@gmail.com](mailto:luis@gmail.com)',25,getdate(),'Managua','M','O+','2001-01-10'),
+(2,'Rosa','Perez','[rosa@gmail.com](mailto:rosa@gmail.com)',30,getdate(),'Leon','F','A+','2005-03-12'),
+(3,'Miguel','Lopez','[miguel@gmail.com](mailto:miguel@gmail.com)',40,getdate(),'Masaya','M','B+','2006-04-20'),
+(4,'Julia','Gomez','[julia@gmail.com](mailto:julia@gmail.com)',22,getdate(),'Granada','F','AB+','2004-07-11'),
+(5,'Daniel','Medina','[daniel@gmail.com](mailto:daniel@gmail.com)',28,getdate(),'Managua','M','O-','2007-05-15'),
+(6,'Elena','Torres','[elena@gmail.com](mailto:elena@gmail.com)',35,getdate(),'Carazo','F','A-','2001-02-10'),
+(7,'Carlos','Mora','[carlos@gmail.com](mailto:carlos@gmail.com)',19,getdate(),'Rivas','M','B-','2007-08-01'),
+(8,'Andy','Rueda','[andrea@gmail.com](mailto:andy@gmail.com)',45,getdate(),'Managua','M','O+','2008-01-14'),
+(9,'Jose','Castillo','[jose@gmail.com](mailto:jose@gmail.com)',50,getdate(),'Esteli','M','A+','2006-06-25'),
+(10,'Patricia','Mendez','[patricia@gmail.com](mailto:patricia@gmail.com)',31,getdate(),'Chinandega','F','AB-','2000-12-01');
