@@ -394,3 +394,80 @@ values
 (8,8,'Diclofenaco','Antiinflamatorio','2027-08-01',75,getdate()),
 (9,9,'Metformina','Control glucosa','2027-09-01',65,getdate()),
 (10,10,'Losartan','Presion arterial','2027-10-01',55,getdate());
+
+--Modulo VI: Update
+
+-- Actualizar telefono de un paciente
+update pacientes
+set telefono = '88887777'
+where id_paciente = 1;
+
+-- Actualizar direccion de un paciente
+update pacientes
+set direccion = 'Masaya'
+where id_paciente = 2;
+
+-- Actualizar salario de un medico
+update medicos
+set salario = 1600.00
+where id_medico = 1;
+
+-- Actualizar turno de un medico
+update medicos
+set turno = 'Nocturno'
+where id_medico = 2;
+
+-- Cambiar estado de una cita
+update citas
+set estado = 'Finalizada'
+where id_cita = 1;
+
+-- Actualizar costo de consulta
+update citas
+set costo_consulta = 50.00
+where id_cita = 2;
+
+-- Actualizar nombre de especialidad
+update especialidades
+set nombre = 'Cardiologia Avanzada'
+where id_especialidad = 1;
+
+-- Actualizar disponibilidad de habitacion
+update habitaciones
+set disponibilidad = 'Ocupada'
+where id_habitacion = 1;
+
+-- Actualizar tratamiento activo
+update tratamientos
+set descripcion = 'Tratamiento actualizado'
+where id_tratamiento = 1;
+
+-- Actualizar medicamento
+update medicamentos
+set nombre = 'Paracetamol Plus'
+where id_medicamento = 1;
+
+-- Actualizar correo de paciente
+update pacientes
+set correo = '[andy.rueda@gmail.com](mailto:andy.rueda@gmail.com)'
+where id_paciente = 8;
+
+-- Actualizar correo de medico
+update medicos
+set correo = '[juan.perez@hospital.com](mailto:juan.perez@hospital.com)'
+where id_medico = 1;
+
+-- Actualizar fecha de cita
+update citas
+set fecha_cita = '2026-07-15 09:00:00'
+where id_cita = 3;
+
+-- Actualizar experiencia del medico
+update medicos
+set experiencia = 15
+where id_medico = 3;
+
+-- Actualizar tipo de sangre
+update pacientes
+set tipo_sangre = 'AB+'
+where id_paciente = 5;
