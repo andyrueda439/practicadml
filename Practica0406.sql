@@ -516,3 +516,41 @@ where fecha_vencimiento < getdate();
 -- Eliminar registros de prueba
 delete from pacientes
 where nombre = 'Prueba';
+
+--Modulo VIII: Consultas SELECT
+
+-- Mostrar todos los pacientes
+select * from pacientes;
+
+-- Mostrar todos los medicos
+select * from medicos;
+
+-- Mostrar todas las especialidades
+select * from especialidades;
+
+-- Mostrar todas las citas
+select * from citas;
+
+-- Mostrar pacientes ordenados por apellido
+select * from pacientes order by apellido;
+
+-- Mostrar medicos ordenados por salario
+select * from medicos order by salario desc;
+
+-- Mostrar citas del dia actual
+select * from citas
+where cast(fecha_cita as date) = cast(getdate() as date);
+
+-- Mostrar habitaciones disponibles
+select * from habitaciones
+where disponibilidad = 'Disponible';
+
+-- Mostrar cantidad de pacientes registrados
+select count(*) as cantidad_pacientes
+from pacientes;
+
+-- Mostrar cantidad de citas por medico
+select id_medico,
+count(*) as cantidad_citas
+from citas
+group by id_medico;
