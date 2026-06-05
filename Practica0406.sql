@@ -471,3 +471,48 @@ where id_medico = 3;
 update pacientes
 set tipo_sangre = 'AB+'
 where id_paciente = 5;
+
+--Modulo VII: DELETE
+
+-- Eliminar un paciente especifico
+delete from pacientes
+where id_paciente = 9;
+
+-- Eliminar una cita
+delete from citas
+where id_cita = 9;
+
+-- Eliminar un medicamento
+delete from medicamentos
+where id_medicamento = 10;
+
+-- Eliminar una habitacion
+delete from habitaciones
+where id_habitacion = 10;
+
+-- Eliminar un tratamiento
+delete from tratamientos
+where id_tratamiento = 10;
+
+-- Eliminar citas canceladas
+delete from citas
+where estado = 'Cancelada';
+
+-- Eliminar pacientes sin citas
+delete from pacientes
+where id_paciente not in (
+select id_paciente
+from citas
+);
+
+-- Eliminar habitaciones vacias
+delete from habitaciones
+where id_paciente is null;
+
+-- Eliminar medicamentos vencidos
+delete from medicamentos
+where fecha_vencimiento < getdate();
+
+-- Eliminar registros de prueba
+delete from pacientes
+where nombre = 'Prueba';
