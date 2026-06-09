@@ -309,3 +309,224 @@ create table TSucursal(
     cTelefono varchar(20)
 );
 go
+
+
+-- PARTE III - INSERT
+
+-- 31. Insertar 5 departamentos
+
+insert into TDepartamento(cNombreDepartamento)
+values
+('Recursos Humanos'),
+('Finanzas'),
+('Tecnologia'),
+('Ventas'),
+('Marketing');
+go
+
+-- 32. Insertar 5 cargos
+
+insert into TCargo(cNombreCargo)
+values
+('Gerente'),
+('Supervisor'),
+('Analista'),
+('Desarrollador'),
+('Asistente');
+go
+
+-- 33. Insertar 10 empleados
+
+insert into TEmpleado
+(
+    cNIF,
+    cNombre,
+    cApellido,
+    nDepartamentoID,
+    nCargoID,
+    dFechaContratacion,
+    nSalario,
+    cEmail,
+    cTelefono,
+    nEdad,
+    bActivo,
+    cGenero,
+    dFechaNacimiento
+)
+values
+('NIF001','Diego','Garcia',1,1,'2022-01-10',1200,'diego@empresa.com','88881111',35,1,'M','1990-05-10'),
+('NIF002','Maria','Cruz',2,2,'2021-03-15',950,'maria@empresa.com','88882222',29,1,'F','2000-08-20'),
+('NIF003','Carlos','Martinez',3,4,'2023-02-01',800,'carlos@empresa.com','88883333',26,1,'M','1999-01-12'),
+('NIF004','Ana','Zapata',4,3,'2020-06-20',1100,'ana@empresa.com','88884444',38,1,'F','1987-11-02'),
+('NIF005','Pedro','Mena',5,5,'2022-08-05',700,'pedro@empresa.com','88885555',24,1,'M','2001-02-14'),
+('NIF006','Lucia','Marin',1,2,'2021-10-10',900,'lucia@empresa.com','88886666',31,1,'F','1994-09-25'),
+('NIF007','Miguel','Quezada',2,3,'2019-12-01',1400,'miguel@empresa.com','88887777',40,1,'M','1985-04-08'),
+('NIF008','Sofia','Noguera',3,4,'2024-01-15',750,'sofia@empresa.com','88888888',23,1,'F','2002-07-18'),
+('NIF009','Justin','Perez',4,5,'2023-09-01',650,'justin@empresa.com','88889999',28,1,'M','1997-03-22'),
+('NIF010','Elena','Avalor',5,3,'2020-11-11',1000,'elena@empresa.com','88890000',36,1,'F','1989-12-30');
+go
+
+-- 34. Insertar 3 proyectos
+
+insert into TProyecto
+(
+    cNombreProyecto,
+    dFechaInicio,
+    dFechaFinalizacion
+)
+values
+('Sistema ERP','2025-01-01','2025-12-31'),
+('Portal Web','2025-02-15','2025-10-15'),
+('App Movil','2025-03-01',null);
+go
+
+-- 35. Asignar empleados a proyectos
+
+insert into TEmpleadoProyecto
+values
+(1,1),
+(2,1),
+(3,1),
+(4,2),
+(5,2),
+(6,2),
+(7,3),
+(8,3),
+(9,3),
+(10,1);
+go
+
+-- 36. Empleado usando fecha por defecto
+
+insert into TEmpleado
+(
+    cNIF,
+    cNombre,
+    cApellido,
+    nDepartamentoID,
+    nCargoID,
+    nSalario,
+    cEmail,
+    cTelefono,
+    nEdad,
+    cGenero,
+    dFechaNacimiento
+)
+values
+(
+    'NIF011',
+    'Mario',
+    'Ruiz',
+    1,
+    4,
+    850,
+    'mario@empresa.com',
+    '88891111',
+    30,
+    'M',
+    '1995-06-01'
+);
+go
+
+-- 37. Empleado con correo electrónico
+
+insert into TEmpleado
+(
+    cNIF,
+    cNombre,
+    cApellido,
+    nDepartamentoID,
+    nCargoID,
+    nSalario,
+    cEmail,
+    cTelefono,
+    nEdad,
+    cGenero,
+    dFechaNacimiento
+)
+values
+(
+    'NIF012',
+    'Laura',
+    'Mendez',
+    2,
+    5,
+    600,
+    'laura@empresa.com',
+    '88892222',
+    27,
+    'F',
+    '1998-10-10'
+);
+go
+
+-- 38. Empleado sin indicar estado activo
+-- tomará el default = 1
+
+insert into TEmpleado
+(
+    cNIF,
+    cNombre,
+    cApellido,
+    nDepartamentoID,
+    nCargoID,
+    nSalario,
+    cEmail,
+    cTelefono,
+    nEdad,
+    cGenero,
+    dFechaNacimiento
+)
+values
+(
+    'NIF013',
+    'Fernando',
+    'Torres',
+    3,
+    3,
+    900,
+    'fernando@empresa.com',
+    '88893333',
+    33,
+    'M',
+    '1992-02-05'
+);
+go
+
+-- 39. Inserción múltiple
+
+insert into TSucursal
+(
+    cNombreSucursal,
+    cDireccion,
+    cTelefono
+)
+values
+('Sucursal Central','Managua','22221111'),
+('Sucursal Norte','Leon','22222222'),
+('Sucursal Sur','Granada','22223333');
+go
+
+-- 40. Intentar insertar salario negativo
+-- Ejecutar por separado para observar el error
+
+/*
+insert into TEmpleado
+(
+    cNIF,
+    cNombre,
+    cApellido,
+    nDepartamentoID,
+    nCargoID,
+    nSalario
+)
+values
+(
+    'NIF999',
+    'Error',
+    'Prueba',
+    1,
+    1,
+    -500
+);
+*/
