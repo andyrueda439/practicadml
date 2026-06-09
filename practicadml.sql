@@ -1,0 +1,121 @@
+--Base de datos – DDL y DML
+--Objetivo
+--Aplicar sentencias DDL y DML para crear, modificar y administrar bases de datos y tablas, implementando restricciones de integridad y manipulando registros mediante consultas SQL.
+--Parte I. Creación de Base de Datos y Tablas (DDL)
+--1. Crear una base de datos llamada EmpresaSQL.
+--2. Seleccionar la base de datos creada.
+--3. Crear una tabla llamada TDepartamento con los campos:
+--nDepartamentoID (PK, Identity)
+--cNombreDepartamento (Unique, Not Null)
+--4. Crear una tabla llamada TCargo con:
+--nCargoID (PK, Identity)
+--cNombreCargo (Unique, Not Null)
+--5. Crear una tabla llamada TEmpleado con:
+--nEmpleadoID (PK, Identity)
+--cNIF (Unique)
+--cNombre
+--cApellido
+--nDepartamentoID
+--nCargoID
+--dFechaContratacion
+--nSalario
+--6. Agregar restricción CHECK para que el salario sea mayor que 300.
+--7. Agregar restricción DEFAULT para la fecha de contratación.
+--Universidad Americana
+--Página # 2
+--8. Establecer llave foránea entre TEmpleado y TDepartamento.
+--9. Establecer llave foránea entre TEmpleado y TCargo.
+--10. Crear una tabla llamada TProyecto.
+--11. Definir clave primaria autoincremental para TProyecto.
+--12. Agregar campo nombre del proyecto obligatorio.
+--13. Agregar fecha de inicio obligatoria.
+--14. Agregar fecha de finalización.
+--15. Crear tabla intermedia TEmpleadoProyecto para relación muchos a muchos.
+--Parte II. Modificación de Estructuras (ALTER)
+--16. Agregar columna cEmail a TEmpleado.
+--17. Agregar columna cTelefono.
+--18. Modificar longitud de cNombre a 100 caracteres.
+--19. Modificar longitud de cApellido a 100 caracteres.
+--20. Agregar columna cDireccion.
+--21. Agregar columna nEdad.
+--22. Crear restricción CHECK para edades entre 18 y 65 años.
+--23. Agregar restricción UNIQUE al correo electrónico.
+--24. Agregar columna bActivo tipo BIT con valor por defecto 1.
+--25. Eliminar la columna cDireccion.
+--26. Cambiar el tipo de dato de teléfono a VARCHAR(20).
+--27. Agregar columna cGenero.
+--28. Agregar restricción CHECK para que el género solo permita M o F.
+--29. Agregar columna dFechaNacimiento.
+--30. Crear una nueva tabla llamada TSucursal.
+--Parte III. Inserción de Datos (INSERT)
+--31. Insertar 5 departamentos diferentes.
+--32. Insertar 5 cargos diferentes.
+--33. Insertar 10 empleados.
+--34. Insertar 3 proyectos.
+--35. Asignar empleados a proyectos.
+--36. Insertar un empleado utilizando el valor por defecto de fecha.
+--37. Insertar un empleado con correo electrónico.
+--38. Insertar un empleado sin indicar estado activo.
+--39. Insertar registros usando múltiples VALUES.
+--40. Intentar insertar un salario negativo y analizar el error.
+--Parte IV. Actualización de Datos (UPDATE)
+--41. Incrementar en 10% el salario de todos los empleados.
+--42. Incrementar en 20% el salario de los empleados de un departamento específico.
+--43. Actualizar el correo electrónico de un empleado.
+--44. Modificar el cargo de un empleado.
+--45. Cambiar el departamento de dos empleados.
+--46. Marcar como inactivos a los empleados con salario inferior a 500.
+--47. Actualizar la fecha de finalización de un proyecto.
+--48. Asignar un nuevo proyecto a un empleado.
+--Parte V. Eliminación de Datos (DELETE)
+--49. Eliminar un empleado específico mediante su NIF.
+--50. Eliminar todos los empleados inactivos.
+--51. Eliminar un proyecto específico.
+--Universidad Americana
+--Página # 4
+--52. Eliminar las asignaciones de un empleado en la tabla TEmpleadoProyecto.
+--53. Eliminar un departamento que no tenga empleados asociados.
+--Parte VI. Consultas de Verificación
+--54. Mostrar todos los empleados ordenados por apellido.
+--55. Mostrar empleados con salario mayor a 1,000.
+--56. Mostrar empleados activos.
+--57. Mostrar empleados contratados durante el año actual.
+--58. Mostrar empleados y el nombre de su departamento.
+--59. Mostrar empleados y el nombre de su cargo.
+--60. Mostrar empleados asignados a proyectos.
+--61. Mostrar cantidad de empleados por departamento.
+--62. Mostrar salario promedio por departamento.
+--63. Mostrar salario máximo y mínimo por departamento.
+--64. Mostrar los proyectos con más de dos empleados asignados.
+--65. Mostrar empleados cuyo apellido inicia con "G".
+--66. Mostrar empleados ordenados por salario descendente.
+--67. Mostrar los tres salarios más altos.
+--68. Mostrar empleados con edad entre 25 y 40 años.
+--69. Mostrar cantidad total de empleados activos.
+--70. Mostrar el total de proyectos registrados.
+--Parte VII. Administración de Objetos
+--71. Eliminar la restricción CHECK de edad.
+--72. Eliminar la restricción UNIQUE del correo.
+--73. Agregar nuevamente ambas restricciones.
+--74. Eliminar la tabla TEmpleadoProyecto.
+--75. Eliminar la tabla TProyecto.
+--76. Eliminar la tabla TEmpleado.
+--77. Eliminar la tabla TCargo.
+--78. Eliminar la tabla TDepartamento.
+--79. Eliminar la tabla TSucursal.
+--80. Eliminar la base de datos EmpresaSQL.
+--Desafíos Adicionales
+--81. Crear una tabla TCliente con al menos 8 campos y restricciones.
+--82. Crear una tabla TVenta relacionada con TCliente.
+--83. Registrar 20 clientes.
+--84. Registrar 50 ventas.
+--85. Actualizar precios o montos de ventas según una condición.
+--86. Eliminar clientes sin ventas.
+--87. Consultar los 5 clientes con mayores compras.
+--88. Consultar ventas por mes.
+--89. Consultar promedio de ventas por cliente.
+--90. Generar un reporte consolidado utilizando JOIN entre tres tablas.
+--Resultado esperado: al finalizar la práctica, el estudiante habrá trabajado con
+--creación, modificación y eliminación de objetos de base de datos, aplicación de
+--restricciones, integridad referencial, inserción, actualización, eliminación y consultas
+--intermedias utilizando SQL Server.
