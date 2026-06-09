@@ -646,3 +646,156 @@ and nDepartamentoID not in
     where nDepartamentoID is not null
 );
 go
+
+
+-- PARTE VI - CONSULTAS
+
+-- 54. Mostrar todos los empleados ordenados por apellido
+
+select *
+from TEmpleado
+order by cApellido;
+go
+
+-- 55. Empleados con salario mayor a 1000
+
+select *
+from TEmpleado
+where nSalario > 1000;
+go
+
+-- 56. Empleados activos
+
+select *
+from TEmpleado
+where bActivo = 1;
+go
+
+-- 57. Empleados contratados durante el año actual
+
+select *
+from TEmpleado
+where year(dFechaContratacion) = year(getdate());
+go
+
+-- 58. Empleados y su departamento
+
+select
+    e.cNombre,
+    e.cApellido,
+    d.cNombreDepartamento
+from TEmpleado e
+inner join TDepartamento d
+    on e.nDepartamentoID = d.nDepartamentoID;
+go
+
+-- 59. Empleados y su cargo
+
+select
+    e.cNombre,
+    e.cApellido,
+    c.cNombreCargo
+from TEmpleado e
+inner join TCargo c
+    on e.nCargoID = c.nCargoID;
+go
+
+-- 60. Empleados asignados a proyectos
+
+select
+    e.cNombre,
+    e.cApellido,
+    p.cNombreProyecto
+from TEmpleado e
+inner join TEmpleadoProyecto ep
+    on e.nEmpleadoID = ep.nEmpleadoID
+inner join TProyecto p
+    on ep.nProyectoID = p.nProyectoID;
+go
+
+-- 61. Cantidad de empleados por departamento
+
+select
+    d.cNombreDepartamento,
+    count(*) as CantidadEmpleados
+from TEmpleado e
+inner join TDepartamento d
+    on e.nDepartamentoID = d.nDepartamentoID
+group by d.cNombreDepartamento;
+go
+
+-- 62. Salario promedio por departamento
+
+select
+    d.cNombreDepartamento,
+    avg(e.nSalario) as SalarioPromedio
+from TEmpleado e
+inner join TDepartamento d
+    on e.nDepartamentoID = d.nDepartamentoID
+group by d.cNombreDepartamento;
+go
+
+-- 63. Salario máximo y mínimo por departamento
+
+select
+    d.cNombreDepartamento,
+    max(e.nSalario) as SalarioMaximo,
+    min(e.nSalario) as SalarioMinimo
+from TEmpleado e
+inner join TDepartamento d
+    on e.nDepartamentoID = d.nDepartamentoID
+group by d.cNombreDepartamento;
+go
+
+-- 64. Proyectos con más de dos empleados asignados
+
+select
+    p.cNombreProyecto,
+    count(*) as CantidadEmpleados
+from TProyecto p
+inner join TEmpleadoProyecto ep
+    on p.nProyectoID = ep.nProyectoID
+group by p.cNombreProyecto
+having count(*) > 2;
+go
+
+-- 65. Apellido inicia con G
+
+select *
+from TEmpleado
+where cApellido like 'G%';
+go
+
+-- 66. Empleados por salario descendente
+
+select *
+from TEmpleado
+order by nSalario desc;
+go
+
+-- 67. Tres salarios más altos
+
+select top 3 *
+from TEmpleado
+order by nSalario desc;
+go
+
+-- 68. Empleados entre 25 y 40 años
+
+select *
+from TEmpleado
+where nEdad between 25 and 40;
+go
+
+-- 69. Cantidad total de empleados activos
+
+select count(*) as TotalActivos
+from TEmpleado
+where bActivo = 1;
+go
+
+-- 70. Total de proyectos registrados
+
+select count(*) as TotalProyectos
+from TProyecto;
+go
