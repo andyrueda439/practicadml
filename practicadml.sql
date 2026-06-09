@@ -119,3 +119,193 @@
 --creación, modificación y eliminación de objetos de base de datos, aplicación de
 --restricciones, integridad referencial, inserción, actualización, eliminación y consultas
 --intermedias utilizando SQL Server.
+
+create database EmpresaSQL;
+go
+
+use EmpresaSQL;
+go
+
+
+-- TDepartamento
+
+create table TDepartamento(
+    nDepartamentoID int identity(1,1) primary key,
+    cNombreDepartamento varchar(100) not null unique
+);
+go
+
+
+-- TCargo
+
+create table TCargo(
+    nCargoID int identity(1,1) primary key,
+    cNombreCargo varchar(100) not null unique
+);
+go
+
+
+-- TEmpleado
+
+create table TEmpleado(
+    nEmpleadoID int identity(1,1) primary key,
+    cNIF varchar(20) unique,
+    cNombre varchar(50) not null,
+    cApellido varchar(50) not null,
+    nDepartamentoID int,
+    nCargoID int,
+    dFechaContratacion date default getdate(),
+    nSalario decimal(10,2),
+
+    constraint CHK_TEmpleado_Salario
+        check (nSalario > 300)
+);
+go
+
+-- Llave foránea Departamento
+
+alter table TEmpleado
+add constraint FK_TEmpleado_Departamento
+foreign key (nDepartamentoID)
+references TDepartamento(nDepartamentoID);
+go
+
+-- Llave foránea Cargo
+
+alter table TEmpleado
+add constraint FK_TEmpleado_Cargo
+foreign key (nCargoID)
+references TCargo(nCargoID);
+go
+
+
+-- TProyecto
+
+create table TProyecto(
+    nProyectoID int identity(1,1) primary key,
+    cNombreProyecto varchar(150) not null,
+    dFechaInicio date not null,
+    dFechaFinalizacion date
+);
+go
+
+
+-- Relación Muchos a Muchos
+
+create table TEmpleadoProyecto(
+    nEmpleadoID int not null,
+    nProyectoID int not null,
+
+    constraint PK_TEmpleadoProyecto
+        primary key(nEmpleadoID, nProyectoID),
+
+    constraint FK_TEmpleadoProyecto_Empleado
+        foreign key(nEmpleadoID)
+        references TEmpleado(nEmpleadoID),
+
+    constraint FK_TEmpleadoProyecto_Proyecto
+        foreign key(nProyectoID)
+        references TProyecto(nProyectoID)
+);
+go
+
+
+-- PARTE II - MODIFICACION DE ESTRUCTURAS
+
+-- 16. Agregar columna cEmail
+
+alter table TEmpleado
+add cEmail varchar(150);
+go
+
+-- 17. Agregar columna cTelefono
+
+alter table TEmpleado
+add cTelefono varchar(15);
+go
+
+-- 18. Modificar longitud de cNombre
+
+alter table TEmpleado
+alter column cNombre varchar(100) not null;
+go
+
+-- 19. Modificar longitud de cApellido
+
+alter table TEmpleado
+alter column cApellido varchar(100) not null;
+go
+
+-- 20. Agregar columna cDireccion
+
+alter table TEmpleado
+add cDireccion varchar(200);
+go
+
+-- 21. Agregar columna nEdad
+
+alter table TEmpleado
+add nEdad int;
+go
+
+-- 22. Restricción CHECK para edad
+
+alter table TEmpleado
+add constraint CHK_TEmpleado_Edad
+check (nEdad between 18 and 65);
+go
+
+-- 23. Restricción UNIQUE para email
+
+alter table TEmpleado
+add constraint UQ_TEmpleado_Email
+unique (cEmail);
+go
+
+-- 24. Columna bActivo con valor por defecto
+
+alter table TEmpleado
+add bActivo bit
+constraint DF_TEmpleado_Activo default 1;
+go
+
+-- 25. Eliminar columna cDireccion
+
+alter table TEmpleado
+drop column cDireccion;
+go
+
+-- 26. Modificar longitud de teléfono
+
+alter table TEmpleado
+alter column cTelefono varchar(20);
+go
+
+-- 27. Agregar columna cGenero
+
+alter table TEmpleado
+add cGenero char(1);
+go
+
+-- 28. Restricción CHECK para género
+
+alter table TEmpleado
+add constraint CHK_TEmpleado_Genero
+check (cGenero in ('M','F'));
+go
+
+-- 29. Agregar fecha de nacimiento
+
+alter table TEmpleado
+add dFechaNacimiento date;
+go
+
+-- 30. Crear tabla TSucursal
+
+create table TSucursal(
+    nSucursalID int identity(1,1) primary key,
+    cNombreSucursal varchar(100) not null,
+    cDireccion varchar(200),
+    cTelefono varchar(20)
+);
+go
