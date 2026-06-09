@@ -588,3 +588,61 @@ go
 insert into TEmpleadoProyecto
 values (1,2);
 go
+
+
+-- PARTE V - DELETE
+
+-- 49. Eliminar un empleado específico mediante NIF
+
+delete from TEmpleadoProyecto
+where nEmpleadoID =
+(
+    select nEmpleadoID
+    from TEmpleado
+    where cNIF = 'NIF012'
+);
+
+delete from TEmpleado
+where cNIF = 'NIF012';
+go
+
+-- 50. Eliminar todos los empleados inactivos
+
+delete from TEmpleadoProyecto
+where nEmpleadoID in
+(
+    select nEmpleadoID
+    from TEmpleado
+    where bActivo = 0
+);
+
+delete from TEmpleado
+where bActivo = 0;
+go
+
+-- 51. Eliminar un proyecto específico
+
+delete from TEmpleadoProyecto
+where nProyectoID = 2;
+
+delete from TProyecto
+where nProyectoID = 2;
+go
+
+-- 52. Eliminar asignaciones de un empleado
+
+delete from TEmpleadoProyecto
+where nEmpleadoID = 3;
+go
+
+-- 53. Eliminar un departamento sin empleados asociados
+
+delete from TDepartamento
+where nDepartamentoID = 5
+and nDepartamentoID not in
+(
+    select distinct nDepartamentoID
+    from TEmpleado
+    where nDepartamentoID is not null
+);
+go
