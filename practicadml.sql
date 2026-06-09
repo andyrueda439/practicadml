@@ -530,3 +530,61 @@ values
     -500
 );
 */
+
+
+-- PARTE IV - UPDATE
+
+-- 41. Incrementar salario 10%
+
+update TEmpleado
+set nSalario = nSalario * 1.10;
+go
+
+-- 42. Incrementar salario 20%
+-- Departamento Tecnología (ID=3)
+
+update TEmpleado
+set nSalario = nSalario * 1.20
+where nDepartamentoID = 3;
+go
+
+-- 43. Actualizar correo
+
+update TEmpleado
+set cEmail = 'nuevo_correo@empresa.com'
+where nEmpleadoID = 1;
+go
+
+-- 44. Modificar cargo de empleado
+
+update TEmpleado
+set nCargoID = 2
+where nEmpleadoID = 3;
+go
+
+-- 45. Cambiar departamento de dos empleados
+
+update TEmpleado
+set nDepartamentoID = 5
+where nEmpleadoID in (4,5);
+go
+
+-- 46. Marcar inactivos salario menor a 500
+
+update TEmpleado
+set bActivo = 0
+where nSalario < 500;
+go
+
+-- 47. Actualizar fecha finalización proyecto
+
+update TProyecto
+set dFechaFinalizacion = '2026-06-30'
+where nProyectoID = 3;
+go
+
+-- 48. Asignar nuevo proyecto a empleado
+
+insert into TEmpleadoProyecto
+values (1,2);
+go
