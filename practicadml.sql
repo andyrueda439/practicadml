@@ -864,3 +864,17 @@ go
 
 drop database EmpresaSQL;
 go
+
+--Desafío 1
+create table TCliente(
+    nClienteID int identity(1,1) primary key,
+    cNombres varchar(100) not null,
+    cApellidos varchar(100) not null,
+    cCedula varchar(20) not null unique,
+    cTelefono varchar(20),
+    cEmail varchar(150) unique,
+    cDireccion varchar(200),
+    dFechaRegistro date default getdate(),
+    bActivo bit default 1
+);
+go
