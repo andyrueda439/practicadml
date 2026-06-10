@@ -878,3 +878,16 @@ create table TCliente(
     bActivo bit default 1
 );
 go
+
+--Desafío 2
+create table TVenta(
+    nVentaID int identity(1,1) primary key,
+    nClienteID int not null,
+    dFechaVenta date not null,
+    nMonto decimal(10,2) not null,
+
+    constraint FK_TVenta_Cliente
+    foreign key (nClienteID)
+    references TCliente(nClienteID)
+);
+go
