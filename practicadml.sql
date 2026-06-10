@@ -891,3 +891,29 @@ create table TVenta(
     references TCliente(nClienteID)
 );
 go
+
+--Desafío 3
+insert into TCliente
+(cNombres,cApellidos,cCedula,cTelefono,cEmail,cDireccion)
+values
+('Juan','Perez','C001','88880001','juan@gmail.com','Managua'),
+('Maria','Lopez','C002','88880002','maria@gmail.com','Leon'),
+('Carlos','Gomez','C003','88880003','carlos@gmail.com','Masaya'),
+('Ana','Martinez','C004','88880004','ana@gmail.com','Granada'),
+('Pedro','Torres','C005','88880005','pedro@gmail.com','Rivas'),
+('Sofia','Ruiz','C006','88880006','sofia@gmail.com','Jinotepe'),
+('Luis','Garcia','C007','88880007','luis@gmail.com','Esteli'),
+('Elena','Mendez','C008','88880008','elena@gmail.com','Chinandega'),
+('Diego','Flores','C009','88880009','diego@gmail.com','Boaco'),
+('Lucia','Silva','C010','88880010','lucia@gmail.com','Matagalpa'),
+('Miguel','Castro','C011','88880011','miguel@gmail.com','Managua'),
+('Paula','Rojas','C012','88880012','paula@gmail.com','Leon'),
+('Jorge','Vega','C013','88880013','jorge@gmail.com','Masaya'),
+('Laura','Morales','C014','88880014','laura@gmail.com','Granada'),
+('Mario','Hernandez','C015','88880015','mario@gmail.com','Rivas'),
+('Carmen','Gutierrez','C016','88880016','carmen@gmail.com','Jinotepe'),
+('Andres','Navarro','C017','88880017','andres@gmail.com','Esteli'),
+('Gabriela','Sanchez','C018','88880018','gabriela@gmail.com','Boaco'),
+('Ricardo','Pineda','C019','88880019','ricardo@gmail.com','Matagalpa'),
+('Valeria','Diaz','C020','88880020','valeria@gmail.com','Managua');
+go
