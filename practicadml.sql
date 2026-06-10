@@ -799,3 +799,68 @@ go
 select count(*) as TotalProyectos
 from TProyecto;
 go
+
+
+-- PARTE VII - ADMINISTRACION DE OBJETOS
+
+-- 71. Eliminar restricción CHECK de edad
+
+alter table TEmpleado
+drop constraint CHK_TEmpleado_Edad;
+go
+
+-- 72. Eliminar restricción UNIQUE de email
+
+alter table TEmpleado
+drop constraint UQ_TEmpleado_Email;
+go
+
+-- 73. Agregar nuevamente ambas restricciones
+
+alter table TEmpleado
+add constraint CHK_TEmpleado_Edad
+check (nEdad between 18 and 65);
+go
+
+alter table TEmpleado
+add constraint UQ_TEmpleado_Email
+unique (cEmail);
+go
+
+-- 74. Eliminar tabla TEmpleadoProyecto
+
+drop table TEmpleadoProyecto;
+go
+
+-- 75. Eliminar tabla TProyecto
+
+drop table TProyecto;
+go
+
+-- 76. Eliminar tabla TEmpleado
+
+drop table TEmpleado;
+go
+
+-- 77. Eliminar tabla TCargo
+
+drop table TCargo;
+go
+
+-- 78. Eliminar tabla TDepartamento
+
+drop table TDepartamento;
+go
+
+-- 79. Eliminar tabla TSucursal
+
+drop table TSucursal;
+go
+
+-- 80. Eliminar base de datos
+
+use master;
+go
+
+drop database EmpresaSQL;
+go
