@@ -947,3 +947,79 @@ values
 (7,'2025-05-07',260),(8,'2025-05-08',220),
 (9,'2025-05-09',410),(10,'2025-05-10',300);
 go
+
+--Desafío 5-10
+-- 85
+
+update TVenta
+set nMonto = nMonto * 1.10
+where nMonto > 500;
+go
+
+-- 86
+
+delete from TCliente
+where nClienteID not in
+(
+    select distinct nClienteID
+    from TVenta
+);
+go
+
+-- 87
+
+select top 5
+    c.cNombres,
+    c.cApellidos,
+    sum(v.nMonto) as TotalCompras
+from TCliente c
+inner join TVenta v
+    on c.nClienteID = v.nClienteID
+group by c.cNombres, c.cApellidos
+order by TotalCompras desc;
+go
+
+-- 88
+
+select
+    month(dFechaVenta) as Mes,
+    sum(nMonto) as TotalVentas
+from TVenta
+group by month(dFechaVenta)
+order by Mes;
+go
+
+-- 89
+
+select
+    c.cNombres,
+    c.cApellidos,
+    avg(v.nMonto) as PromedioCompras
+from TCliente c
+inner join TVenta v
+    on c.nClienteID = v.nClienteID
+group by c.cNombres, c.cApellidos;
+go
+
+-- 90
+
+select
+    c.cNombres,
+    c.cApellidos,
+    v.nVentaID,
+    v.dFechaVenta,
+    v.nMonto
+from TCliente c
+inner join TVenta v
+    on c.nClienteID = v.nClienteID
+inner join
+(
+    select
+        nClienteID,
+        count(*) as CantidadVentas
+    from TVenta
+    group by nClienteID
+) t
+    on c.nClienteID = t.nClienteID
+order by c.cApellidos;
+go
